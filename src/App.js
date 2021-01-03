@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.module.css';
+import React from 'react';
+import {NavLink, Redirect, Route, Switch} from "react-router-dom";
+import MainPageContainer from "./components/ImagePage/MainPageContainer";
+import HistoryContainer from "./components/HistoryPage/HistoryContainer";
+import styles from "./App.module.css";
+
+export const Navigation = () => {
+    return <header className={styles.header}>
+       <button><NavLink to="/main">Images</NavLink></button>
+       <button><NavLink to="/story">History</NavLink></button>
+    </header>
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <Navigation/>
+            <div>
+                <Switch>
+                    <Redirect exact from='/' to='/main'/>
+                    <Route path='/main' render={() => <MainPageContainer/>}/>
+                    <Route path='/story' render={() => <HistoryContainer/>}/>
+                </Switch>
+            </div>
+        </>
+    )
 }
 
 export default App;

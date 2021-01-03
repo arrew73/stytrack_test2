@@ -1,0 +1,13 @@
+.history__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.history__container button {
+    height: 10%;
+    border: none;
+    color:red;
+    background: white;
+    cursor: pointer;
+}
